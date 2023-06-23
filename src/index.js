@@ -60,6 +60,15 @@ function Header() {
   return (
     <header className="header">
       <h1>Oblio's Pizza & Italian</h1>
+      <div className="menu">
+        <p>
+          Oblio's is a neighborhood pizza & Italian restaurant full of
+          nostalgia, serving the Park Hill and greater Denver area for over 26
+          years. Enjoy honest, fresh, genuine, daily made-from-scratch food with
+          the highest quality ingredients, paired with local craft beer, drinks,
+          and wine.
+        </p>
+      </div>
     </header>
   );
 }
@@ -71,7 +80,6 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our Menu</h2>
-
       {numPizzas > 0 ? (
         <ul className="pizzas">
           {pizzas.map((pizza) => (
@@ -88,14 +96,15 @@ function Menu() {
 function Pizza({ pizzaObj }) {
   const { soldOut, photoName, name, ingredients, price } = pizzaObj;
 
-  if (soldOut) return null;
+  // if (soldOut) return null;
+
   return (
-    <li className="pizza">
+    <li className={`pizza ${soldOut ? "sold-out" : ""}`}>
       <img src={photoName} alt={name} />
       <div>
         <h2> {name}</h2>
         <p>{ingredients}</p>
-        <span>${price + 3}</span>
+        <span>{soldOut ? "SOLD OUT" : "$" + price}</span>
       </div>
     </li>
   );

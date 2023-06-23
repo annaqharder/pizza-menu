@@ -83,6 +83,7 @@ body {
 
 .menu h2 {
   display: inline-block;
+  margin-top: 3rem;
   padding: 1rem 0;
   border-top: 2px solid currentColor;
   border-bottom: 2px solid currentColor;
