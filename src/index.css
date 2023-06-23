@@ -40,6 +40,7 @@ body {
 .header h1 {
   /* Non-accessible color */
   color: #edc84b;
+  padding: 3rem;
   /* color: #af8602; */
 
   text-transform: uppercase;
@@ -153,6 +154,8 @@ body {
 
 .footer {
   font-size: 1.4rem;
+  text-align: center;
+  padding: 5rem;
 }
 
 .order {
