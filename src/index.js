@@ -41,7 +41,7 @@ const pizzaData = [
   {
     name: "Pizza Prosciutto",
     ingredients: "Tomato, mozarella, ham, aragula, and burrata cheese",
-    price: 18,
+    price: 16,
     photoName: "pizzas/prosciutto.jpg",
     soldOut: false,
   },
@@ -59,14 +59,13 @@ function App() {
 function Header() {
   return (
     <header className="header">
-      <h1>Fast React Pizza Company</h1>
+      <h1>Oblio's Pizza & Italian</h1>
     </header>
   );
 }
 
 function Menu() {
   const pizzas = pizzaData;
-  // const pizzas = [];
   const numPizzas = pizzas.length;
 
   return (
@@ -86,17 +85,17 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
-  console.log(props);
+function Pizza({ pizzaObj }) {
+  const { soldOut, photoName, name, ingredients, price } = pizzaObj;
 
-  if (props.pizzaObj.soldOut) return null;
+  if (soldOut) return null;
   return (
     <li className="pizza">
-      <img src={props.pizzaObj.photoName} alt={props.pizzaObj.name} />
+      <img src={photoName} alt={name} />
       <div>
-        <h2> {props.pizzaObj.name}</h2>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>${props.pizzaObj.price + 3}</span>
+        <h2> {name}</h2>
+        <p>{ingredients}</p>
+        <span>${price + 3}</span>
       </div>
     </li>
   );
@@ -111,7 +110,7 @@ function Footer() {
   return (
     <footer className="footer">
       {isOpen ? (
-        <Order closeHour={closeHour} />
+        <Order closeHour={closeHour} openHour={openHour} />
       ) : (
         <p>
           We're happy to welcome you between {openHour}:00 and {closeHour}:00!
@@ -121,11 +120,13 @@ function Footer() {
   );
 }
 
-function Order({ closeHour }) {
+function Order({ closeHour, openHour }) {
   return (
     <div className="order">
-      {" "}
-      <p>We're open until {closeHour}:00. Come visit us or order online!</p>
+      <p>
+        We're open from {openHour}:00 to {closeHour}:00. Come visit us or order
+        online!
+      </p>
       <button className="btn"> Order</button>
     </div>
   );
